@@ -22,21 +22,18 @@ export default function Team() {
         </div>
 
         <div className={styles.cards}>
-          {members.map((m, i) => (
+          {members.map((m) => (
             <div
               key={m.name + m.role}
               className={`
                 ${styles.card}
                 ${m.tilt ? styles[m.tilt] : ''}
                 ${m.founder ? styles.founder : ''}
-                animate-popIn
               `}
-              style={{ animationDelay: `${0.15 * i}s` }}
             >
               <div className={`${styles.avatar} ${styles[m.av]}`} role="img" aria-label={m.name} />
               <h5>{m.name}</h5>
               <span>{m.role}</span>
-              {m.founder && <span className={styles.badge}>Fondateur</span>}
             </div>
           ))}
         </div>
