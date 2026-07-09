@@ -7,6 +7,7 @@ export default function Hero() {
       <div className={styles.ambient} aria-hidden="true">
         <span className={styles.shape1} />
         <span className={styles.shape2} />
+        <span className={styles.shape3} />
       </div>
 
       <div className={styles.content}>
