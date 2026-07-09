@@ -8,6 +8,12 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
+  align-items: start;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
 }
 
 .label { color: var(--gold); }
@@ -56,10 +62,15 @@
 
 a.infoValue:hover { opacity: 0.7; }
 
+.formWrap,
 .form {
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.formWrap {
+  height: 100%;
 }
 
 .input {
@@ -71,12 +82,19 @@ a.infoValue:hover { opacity: 0.7; }
   font-size: 14px;
   color: var(--white);
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
   width: 100%;
 }
 
-.input::placeholder { color: rgba(255, 255, 255, 0.28); }
-.input:focus { border-color: rgba(255, 255, 255, 0.3); }
+.input::placeholder { color: rgba(255, 255, 255, 0.28); transition: color 0.25s ease; }
+.input:hover { border-color: rgba(255, 255, 255, 0.2); }
+.input:focus {
+  border-color: var(--gold);
+  background: #202020;
+  box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.1);
+  transform: translateY(-1px);
+}
+.input:focus::placeholder { color: rgba(255, 255, 255, 0.4); }
 
 .textarea {
   resize: vertical;

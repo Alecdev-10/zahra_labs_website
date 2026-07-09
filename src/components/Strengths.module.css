@@ -1,0 +1,71 @@
+.section {
+  padding: var(--pad-y) var(--pad-x);
+  background: var(--cream);
+  border-top: 1px solid var(--border);
+}
+
+.header { margin-bottom: 48px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.card {
+  padding: 28px 24px;
+  background: var(--white);
+  border-radius: var(--radius-card);
+  min-width: 0;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.08);
+}
+
+.marker {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  margin-bottom: 18px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card:hover .marker {
+  transform: scale(1.4);
+  box-shadow: 0 0 12px rgba(245, 166, 35, 0.4);
+}
+
+.card h4 {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  color: var(--ink);
+  margin-bottom: 10px;
+  transition: color 0.25s ease;
+}
+
+.card:hover h4 {
+  color: var(--blue);
+}
+
+.card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+@media (max-width: 1100px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 720px) {
+  .grid { grid-template-columns: 1fr; }
+  .card { padding: 24px 20px; }
+}

@@ -5,6 +5,7 @@ import Services  from './components/Services'
 import Method    from './components/Method'
 import Impact    from './components/Impact'
 import Team      from './components/Team'
+import Strengths from './components/Strengths'
 import Banner    from './components/Banner'
 import FAQ       from './components/FAQ'
 import Contact   from './components/Contact'
@@ -21,6 +22,7 @@ export default function App() {
         <Method />
         <Impact />
         <Team />
+        <Strengths />
         <Banner />
         <FAQ />
         <Contact />

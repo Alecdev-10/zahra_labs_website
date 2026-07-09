@@ -43,8 +43,8 @@ export default function Nav() {
   return (
     <div ref={navRef}>
       <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''} ${hidden ? styles.hidden : ''}`} aria-label="Navigation principale">
-        <a href="#" className={styles.logo} aria-label="Zara Labs — accueil">
-          ZARA <em>LABS</em>
+        <a href="#" className={styles.logo} aria-label="Zahra Labs — accueil">
+          ZAHRA <em>LABS</em>
         </a>
 
         <ul className={styles.links} role="list">
@@ -52,7 +52,6 @@ export default function Nav() {
             <li key={href}><a href={href}>{label}</a></li>
           ))}
         </ul>
-        <a href="#contact" className={styles.cta}>Démarrer un projet</a>
 
         <button
           className={styles.burger}

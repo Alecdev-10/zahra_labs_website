@@ -1,7 +1,10 @@
 .banner {
   padding: 88px var(--pad-x);
   background: linear-gradient(135deg, var(--blue) 0%, #0D1F4A 100%);
+  background-size: 200% 200%;
   text-align: center;
+  animation: shimmer 10s ease infinite;
+  overflow: hidden;
 }
 
 .banner p {
@@ -13,4 +16,16 @@
   color: var(--white);
   max-width: 640px;
   margin: 0 auto;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.banner:hover p {
+  transform: scale(1.02);
+  opacity: 0.95;
 }

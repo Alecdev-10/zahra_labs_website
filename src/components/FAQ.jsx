@@ -1,74 +1,75 @@
 import { useState } from 'react'
+import Reveal from './Reveal'
 import styles from './FAQ.module.css'
 
 const faqs = [
   {
-    q: 'Comment démarrer un projet avec Zara Labs ?',
-    a: 'Un premier échange de 30 minutes pour cerner le besoin, puis une note de cadrage sous 48h avec périmètre, livrables et budget indicatif.',
+    q: "Quels types de structures ZAHRA LABS accompagne-t-elle ?",
+    a: "ZAHRA LABS travaille avec des institutions publiques, des organisations internationales, des entreprises privées, des PME, des startups et des porteurs de projets individuels, en adaptant son approche à chaque contexte.",
   },
   {
-    q: 'Quels secteurs accompagnez-vous ?',
-    a: "Santé, agriculture, énergie, logistique, éducation, finance, administration publique et ONG. Nos outils sont conçus pour les réalités terrain ouest-africaines.",
+    q: "Proposez-vous uniquement des services numériques ?",
+    a: "Non. Si le numérique et l'intelligence artificielle constituent un axe fort de notre activité, nous intervenons également en conseil stratégique, accompagnement d'entreprises, ingénierie écologique, économie circulaire et formation.",
   },
   {
-    q: "Quel est le délai moyen d'un audit ?",
-    a: "Entre 2 et 4 semaines selon la complexité du système. Vous recevez une restitution documentée avec plan d'action priorisé.",
+    q: "Comment démarrer un projet avec ZAHRA LABS ?",
+    a: "Il suffit de nous contacter par téléphone ou par e-mail avec une description, même sommaire, de votre besoin. Un premier échange permet de cadrer le projet avant l'envoi d'une proposition détaillée.",
   },
   {
-    q: 'Travaillez-vous en dehors du Bénin ?',
-    a: "Oui. Nous intervenons dans toute l'Afrique de l'Ouest, avec une capacité de travail à distance complète et des déplacements terrain si nécessaires.",
+    q: "Combien de temps dure un projet type ?",
+    a: "La durée varie selon la nature et l'ampleur du projet : une étude ponctuelle peut se boucler en quelques semaines, tandis qu'un accompagnement stratégique ou un développement numérique complet peut s'étaler sur plusieurs mois. Un délai indicatif est toujours communiqué dès la phase de proposition.",
   },
   {
-    q: "Proposez-vous de l'incubation pour startups ?",
-    a: "Oui — cadrage produit, go-to-market, accès investisseurs, mentorat technique et mise en réseau avec l'écosystème régional.",
+    q: "Proposez-vous des formations sur mesure ?",
+    a: "Oui. Nos formations peuvent être adaptées aux besoins spécifiques d'une équipe, d'une entreprise ou d'un porteur de projet, en présentiel ou à distance, selon les thématiques et le format souhaités.",
   },
   {
-    q: 'Comment se passe la facturation ?',
-    a: "Au forfait ou en régie selon la nature du projet. Un devis détaillé est fourni après le cadrage, avec jalons de paiement alignés sur les livrables.",
+    q: "Assurez-vous un suivi après la livraison d'un projet ?",
+    a: "Oui, un accompagnement post-livraison est systématiquement proposé, qu'il s'agisse de support technique, d'ajustements ou d'un dispositif de suivi dans la durée.",
   },
   {
-    q: 'Quelles technologies utilisez-vous ?',
-    a: "Nous choisissons la stack adaptée au contexte : React, Next.js, Node.js, Python, PostgreSQL, ainsi que des solutions no-code/low-code pour les projets à contraintes budget.",
-  },
-  {
-    q: 'Êtes-vous une agence ou un cabinet de conseil ?',
-    a: "Les deux à la fois — c'est notre différence. Nous livrons du code et du conseil dans le même engagement, sans intermédiaires.",
+    q: "ZAHRA LABS est-elle une entreprise légalement enregistrée ?",
+    a: "Oui. ZAHRA LABS est immatriculée au Registre du Commerce et du Crédit Mobilier de Cotonou sous le numéro RB/ABC/20 A 20765, depuis le 13 août 2020.",
   },
 ]
 
 export default function FAQ() {
-  const [open, setOpen] = useState(0) // first question open by default
+  const [open, setOpen] = useState(0)
 
   const toggle = (i) => setOpen(open === i ? null : i)
 
   return (
     <section className={styles.section} id="faq" aria-labelledby="faq-title">
-      <div className={styles.header}>
-        <h2 className="section-title" id="faq-title">
-          Tout ce qu'on nous demande souvent.
-        </h2>
-      </div>
+      <Reveal animation="fadeInUp">
+        <div className={styles.header}>
+          <p className="eyebrow">Questions fréquentes</p>
+          <h2 className="section-title" id="faq-title">
+            Tout ce qu'on nous demande souvent.
+          </h2>
+        </div>
+      </Reveal>
 
-      {/* Dashed blue frame — same brand identity as hero */}
-      <div className={styles.dashedFrame}>
-        {faqs.map((item, i) => (
-          <div key={i} className={`${styles.item} ${open === i ? styles.open : ''}`}>
-            <button
-              className={styles.q}
-              onClick={() => toggle(i)}
-              aria-expanded={open === i}
-            >
-              <span>{item.q}</span>
-              <span className={styles.chevron} aria-hidden="true">
-                {open === i ? '−' : '+'}
-              </span>
-            </button>
-            <div className={styles.a} role="region">
-              <p>{item.a}</p>
+      <Reveal animation="fadeInUp" delay={0.2}>
+        <div className={styles.dashedFrame}>
+          {faqs.map((item, i) => (
+            <div key={i} className={`${styles.item} ${open === i ? styles.open : ''}`}>
+              <button
+                className={styles.q}
+                onClick={() => toggle(i)}
+                aria-expanded={open === i}
+              >
+                <span>{item.q}</span>
+                <span className={styles.chevron} aria-hidden="true">
+                  {open === i ? '−' : '+'}
+                </span>
+              </button>
+              <div className={styles.a} role="region">
+                <p>{item.a}</p>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </Reveal>
     </section>
   )
 }

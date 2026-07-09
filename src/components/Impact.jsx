@@ -1,51 +1,59 @@
+import CountUp from './CountUp'
+import Reveal from './Reveal'
 import styles from './Impact.module.css'
 
 const stats = [
-  { n: '3',   suffix: '',   label: "Filières d'expertise" },
+  { n: '3',   suffix: '',   label: "Pôles d'expertise" },
   { n: '12',  suffix: '+',  label: 'Services proposés' },
   { n: '100', suffix: '%',  label: 'Ancrage Bénin' },
   { n: '24',  suffix: '/7', label: 'Engagement client' },
 ]
 
 const sectors = ['Santé', 'Agriculture', 'Énergie', 'Logistique', 'Éducation', 'Finance', 'Administration publique', 'ONG']
-const ticker = [...sectors, ...sectors, ...sectors, ...sectors]
 
 export default function Impact() {
   return (
     <section className={styles.section} id="impact" aria-labelledby="impact-title">
-
-      {/* Padded inner content */}
-      <div className={styles.inner}>
-        <div className={styles.header}>
-          <p className="eyebrow">Impact</p>
-          <h2 className="section-title" id="impact-title">
-            Notre impact en quelques chiffres.
-          </h2>
-        </div>
-
-        <div className={styles.stats} role="list">
-          {stats.map((s) => (
-            <div key={s.label} className={styles.stat} role="listitem">
-              <p className={styles.statN}>
-                {s.n}
-                {s.suffix && <span className={styles.suffix}>{s.suffix}</span>}
-              </p>
-              <p className={styles.statLabel}>{s.label}</p>
-            </div>
-          ))}
-        </div>
+      <div className={styles.ambient} aria-hidden="true">
+        <span className={styles.orb1} />
+        <span className={styles.orb2} />
       </div>
 
-      {/* Full-bleed ticker — sits outside inner padding */}
-      <div className={styles.tickerWrap} aria-hidden="true">
-        <div className={styles.track}>
-          {ticker.map((item, i) => (
-            <span key={i} className={styles.item}>
-              {item}
-              <span className={styles.dot} />
-            </span>
+      <div className={styles.inner}>
+        <Reveal animation="fadeInUp">
+          <div className={styles.header}>
+            <p className={`eyebrow ${styles.eyebrowLight}`}>Impact</p>
+            <h2 className={`section-title ${styles.sectionTitle}`} id="impact-title">
+              Notre impact en quelques chiffres.
+            </h2>
+          </div>
+        </Reveal>
+
+        <div className={styles.stats} role="list">
+          {stats.map((s, i) => (
+            <Reveal key={s.label} animation="popIn" delay={0.1 * i} threshold={0.1}>
+              <div className={styles.stat} role="listitem">
+                <p className={styles.statN}>
+                  <CountUp value={s.n} />
+                  {s.suffix && <span className={styles.suffix}>{s.suffix}</span>}
+                </p>
+                <p className={styles.statLabel}>{s.label}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
+
+        <Reveal animation="fadeInUp" delay={0.4} threshold={0.1}>
+          <div className={styles.sectors} aria-hidden="true">
+            <div className={styles.track}>
+              {[...sectors, ...sectors, ...sectors].map((item, i) => (
+                <span key={i} className={styles.sector}>
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </div>
 
     </section>

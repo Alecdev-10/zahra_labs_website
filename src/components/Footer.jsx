@@ -2,7 +2,7 @@ import styles from './Footer.module.css'
 
 const cols = [
   {
-    heading: 'Piliers',
+    heading: 'Pôles',
     links: [
       { href: '#expertise', label: 'Tech & Innovation' },
       { href: '#expertise', label: 'Conseil & Accompagnement' },
@@ -13,21 +13,27 @@ const cols = [
     heading: 'Services',
     links: [
       { href: '#services', label: 'Plateformes numériques' },
-      { href: '#services', label: 'Applications logistiques' },
       { href: '#services', label: 'Solutions IA' },
       { href: '#services', label: 'Audits techniques' },
       { href: '#services', label: 'Coaching & incubation' },
     ],
   },
   {
-    heading: 'Naviguer',
+    heading: 'Maison',
     links: [
-      { href: '#expertise', label: 'À propos' },
-      { href: '#services',  label: 'Services' },
-      { href: '#impact',    label: 'Impact' },
-      { href: '#methode',   label: 'Comment ça marche' },
+      { href: '#equipe',  label: 'À propos' },
+      { href: '#impact',  label: 'Impact' },
+      { href: '#methode', label: 'Comment ça marche' },
+      { href: '#atouts',  label: 'Nos atouts' },
     ],
   },
+]
+
+const socials = [
+  { href: '#', label: 'LinkedIn' },
+  { href: '#', label: 'X' },
+  { href: '#', label: 'Instagram' },
+  { href: '#', label: 'YouTube' },
 ]
 
 export default function Footer() {
@@ -35,8 +41,9 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.grid}>
         <div className={styles.brand}>
-          <p className={styles.logo}>ZARA <em>LABS</em></p>
-          <p>Innovation tech, conseil et impact. Depuis Cotonou, vers toute l'Afrique de l'Ouest.</p>
+          <p className={styles.logo}>ZAHRA <em>LABS</em></p>
+          <p className={styles.tagline}>Études, conseil, innovation technologique et formation. Basée à Abomey-Calavi, Bénin.</p>
+          <p className={styles.legal}>RCCM RB/ABC/20 A 20765 — Cotonou · Depuis 2020</p>
         </div>
         {cols.map((col) => (
           <div key={col.heading} className={styles.col}>
@@ -50,8 +57,12 @@ export default function Footer() {
         ))}
       </div>
       <div className={styles.bottom}>
-        <span>© 2026 Zara Labs. Cotonou, Bénin.</span>
-        <span>Fait avec rigueur, livré avec impact.</span>
+        <span>© 2026 ZAHRA LABS · Cotonou, Bénin.</span>
+        <div className={styles.socials}>
+          {socials.map((s) => (
+            <a key={s.label} href={s.href}>{s.label}</a>
+          ))}
+        </div>
       </div>
     </footer>
   )

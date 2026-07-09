@@ -4,22 +4,26 @@ import styles from './Hero.module.css'
 export default function Hero() {
   return (
     <section className={styles.section} aria-labelledby="hero-title">
-      {/* Dashed blue frame — brand identity element */}
-      <div className={styles.dashedFrame}>
-        <p className={`eyebrow ${styles.tag}`}>
-          Tech · Conseil · Impact — depuis le Bénin
-        </p>
-        <h1 id="hero-title" className={styles.h1}>
+      <div className={styles.ambient} aria-hidden="true">
+        <span className={styles.shape1} />
+        <span className={styles.shape2} />
+      </div>
+
+      <div className={styles.content}>
+        <h1 id="hero-title" className={`${styles.h1} animate-fadeInUp`}>
           Innovation tech,<br />
           conseil et impact,<br />
           depuis le Bénin.
         </h1>
-        <p className={styles.sub}>
-          Nous concevons des plateformes numériques, des solutions IA et des outils
-          AgriTech &amp; HealthTech. PME, startups et acteurs publics — nous les accompagnons
-          du diagnostic à la mise en production.
+        <p className={`${styles.sub} animate-fadeInUp delay-200`}>
+          Nous accompagnons les organisations et les entrepreneurs
+          dans leur transformation digitale, leur croissance et leurs
+          pratiques durables, grâce à l'expertise, l'innovation
+          technologique et la formation.
         </p>
-        <ToggleBtn href="#contact" variant="dark">Démarrer un projet</ToggleBtn>
+        <div className={`animate-fadeInUp delay-400 ${styles.ctaWrap}`}>
+          <ToggleBtn href="#contact" variant="light">Démarrer un projet</ToggleBtn>
+        </div>
       </div>
     </section>
   )

@@ -51,13 +51,13 @@
   flex-shrink: 0;
   margin-left: -12px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
   position: relative;
 }
 
 .card:hover {
   z-index: 3;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.18);
 }
 
 /* Card du milieu au-dessus pour l'effet de chevauchement */
@@ -65,9 +65,9 @@
 
 .tiltLeft  { transform: rotate(-4deg); z-index: 1; }
 .tiltRight { transform: rotate(4deg);  z-index: 1; }
-.tiltLeft:hover  { transform: rotate(-4deg) translateY(-6px); }
-.tiltRight:hover { transform: rotate(4deg) translateY(-6px); }
-.card:nth-child(2):hover { transform: translateY(-6px); }
+.tiltLeft:hover  { transform: rotate(-2deg) translateY(-14px) scale(1.05); }
+.tiltRight:hover { transform: rotate(2deg) translateY(-14px) scale(1.05); }
+.card:nth-child(2):hover { transform: translateY(-14px) scale(1.05); }
 
 .avatar {
   width: 56px;
@@ -75,11 +75,26 @@
   border-radius: 50%;
   margin-bottom: 14px;
   flex-shrink: 0;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover .avatar {
+  transform: scale(1.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 }
 
 .av1 { background: linear-gradient(135deg, #F5A623, #E8920A); }
 .av2 { background: linear-gradient(135deg, #1A3A8F, #2E5CB8); }
 .av3 { background: linear-gradient(135deg, #F5A623, #D4880A); }
+
+.card h5 {
+  transition: color 0.25s ease;
+}
+
+.card:hover h5 {
+  color: var(--blue);
+}
 
 .card h5 {
   font-family: var(--font-display);
