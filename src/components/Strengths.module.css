@@ -49,32 +49,26 @@
   transform: scaleX(1);
 }
 
-.marker {
-  display: block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: rgba(245, 166, 35, 0.1);
+  color: var(--gold);
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              background 0.35s ease,
+              color 0.35s ease;
+}
+
+.card:hover .icon {
+  transform: scale(1.1) rotate(-6deg);
   background: var(--gold);
-  margin-bottom: 18px;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-  animation: markerPulse 2.5s ease-in-out infinite;
-}
-
-.card:hover .marker {
-  transform: scale(1.5);
-  box-shadow: 0 0 18px rgba(245, 166, 35, 0.6);
-  animation-play-state: paused;
-}
-
-@keyframes markerPulse {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(245, 166, 35, 0.4);
-  }
-  50% {
-    transform: scale(1.15);
-    box-shadow: 0 0 0 8px rgba(245, 166, 35, 0);
-  }
+  color: var(--white);
 }
 
 .card h4 {

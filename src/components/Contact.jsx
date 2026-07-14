@@ -1,16 +1,46 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import emailjs from '@emailjs/browser'
 import Reveal from './Reveal'
 import ToggleBtn from './ToggleBtn'
 import styles from './Contact.module.css'
 
-export default function Contact() {
-  const [sent, setSent] = useState(false)
+// Configure these 3 values from your EmailJS dashboard (emailjs.com)
+// 1. Create a free account and add your Gmail/email service
+// 2. Create an email template with variables: {{from_name}}, {{from_email}}, {{company}}, {{message}}
+// 3. Copy the Service ID, Template ID, and Public Key below
+const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID'
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'
+const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY'
 
-  const handleSubmit = (e) => {
+export default function Contact() {
+  const formRef = useRef(null)
+  const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'sent' | 'error'
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSent(true)
-    setTimeout(() => { setSent(false); e.target.reset() }, 3500)
+    if (status === 'sending') return
+    setStatus('sending')
+    try {
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      )
+      setStatus('sent')
+      formRef.current.reset()
+      setTimeout(() => setStatus('idle'), 4000)
+    } catch {
+      setStatus('error')
+      setTimeout(() => setStatus('idle'), 4000)
+    }
   }
+
+  const btnLabel =
+    status === 'sending' ? 'Envoi en cours…'
+    : status === 'sent'  ? 'Message envoyé ✓'
+    : status === 'error' ? 'Erreur — réessayez'
+    : 'Envoyer le message'
 
   return (
     <section className={styles.section} id="contact" aria-labelledby="contact-title">
@@ -53,14 +83,14 @@ export default function Contact() {
         </Reveal>
 
         <Reveal animation="slideInRight" delay={0.2} className={styles.formWrap}>
-          <form className={styles.form} onSubmit={handleSubmit} noValidate>
-            <input className={styles.input} type="text"  name="name"    placeholder="Votre nom"                    required autoComplete="name" />
-            <input className={styles.input} type="email" name="email"   placeholder="Votre email"                  required autoComplete="email" />
-            <input className={styles.input} type="text"  name="company" placeholder="Votre entreprise (optionnel)"          autoComplete="organization" />
+          <form ref={formRef} className={styles.form} onSubmit={handleSubmit} noValidate>
+            <input className={styles.input} type="text"  name="from_name"    placeholder="Votre nom"                    required autoComplete="name" />
+            <input className={styles.input} type="email" name="from_email"   placeholder="Votre email"                  required autoComplete="email" />
+            <input className={styles.input} type="text"  name="company"      placeholder="Votre entreprise (optionnel)"          autoComplete="organization" />
             <textarea className={`${styles.input} ${styles.textarea}`} name="message" placeholder="Décrivez votre projet…" required />
             <div>
-              <ToggleBtn variant="light" onClick={handleSubmit}>
-                {sent ? 'Message envoyé ✓' : 'Envoyer le message'}
+              <ToggleBtn variant="light">
+                {btnLabel}
               </ToggleBtn>
             </div>
           </form>

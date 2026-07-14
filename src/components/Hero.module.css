@@ -1,5 +1,7 @@
 .section {
-  background: var(--blue);
+  background:
+    linear-gradient(135deg, rgba(10, 20, 60, 0.82) 0%, rgba(26, 58, 143, 0.75) 55%, rgba(10, 20, 60, 0.88) 100%),
+    url('/images/hero-bg.jpg') center/cover no-repeat;
   padding: 160px var(--pad-x) 120px;
   display: flex;
   align-items: center;
@@ -16,7 +18,7 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle at 30% 30%, rgba(245, 166, 35, 0.16) 0%, transparent 45%),
+  background: radial-gradient(circle at 30% 30%, rgba(245, 166, 35, 0.18) 0%, transparent 45%),
               radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.06) 0%, transparent 45%);
   animation: float 12s ease-in-out infinite;
   pointer-events: none;

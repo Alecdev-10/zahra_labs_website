@@ -70,10 +70,41 @@
   transform: scale(1.1);
 }
 
-/* Gradient: bleu #1A3A8F → or #F5A623 */
-.ev1 { background: linear-gradient(135deg, #1A3A8F 0%, #2E5CB8 40%, #F5A623 100%); }
-.ev2 { background: linear-gradient(135deg, #1A3A8F 0%, #F5A623 100%); }
-.ev3 { background: linear-gradient(135deg, #F5A623 0%, #1A3A8F 100%); }
+.ev1 {
+  background-image: url('/images/tech-innovation.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.ev1::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(26, 58, 143, 0.72) 0%, rgba(46, 92, 184, 0.5) 50%, rgba(245, 166, 35, 0.45) 100%);
+}
+
+.ev2 {
+  background-image: url('/images/conseil.jpg');
+  background-size: cover;
+  background-position: center top;
+}
+.ev2::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(26, 58, 143, 0.68) 0%, rgba(245, 166, 35, 0.4) 100%);
+}
+
+.ev3 {
+  background-image: url('/images/agri-health.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.ev3::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(245, 166, 35, 0.45) 0%, rgba(26, 58, 143, 0.7) 100%);
+}
 
 .num {
   font-size: 11px;

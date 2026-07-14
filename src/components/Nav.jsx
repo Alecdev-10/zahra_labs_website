@@ -6,6 +6,7 @@ const links = [
   { href: '#services',  label: 'Services' },
   { href: '#impact',    label: 'Impact' },
   { href: '#equipe',    label: 'À propos' },
+  { href: '#contact',   label: 'Nous contacter' },
 ]
 
 export default function Nav() {

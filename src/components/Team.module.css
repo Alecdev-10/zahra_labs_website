@@ -27,6 +27,14 @@
   font-size: 15px;
   color: var(--text-muted);
   line-height: 1.72;
+  margin-bottom: 20px;
+}
+
+.contact {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--blue);
+  line-height: 1.6;
 }
 
 /* 3 cards sur une ligne, se chevauchent légèrement */
@@ -55,7 +63,6 @@
 
 .card:hover {
   z-index: 3;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
 }
 
 /* Card du milieu au-dessus pour l'effet de chevauchement */
@@ -63,8 +70,16 @@
 
 .tiltLeft  { transform: rotate(-4deg); z-index: 1; }
 .tiltRight { transform: rotate(4deg);  z-index: 1; }
-.tiltLeft:hover  { transform: rotate(-4deg) translateY(-10px); }
-.tiltRight:hover { transform: rotate(4deg) translateY(-10px); }
+
+/* Hover bleu pour les cartes latérales */
+.tiltLeft:hover  {
+  transform: rotate(-4deg) translateY(-10px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14), 0 0 0 2px var(--blue), 0 0 28px rgba(26, 58, 143, 0.2);
+}
+.tiltRight:hover {
+  transform: rotate(4deg) translateY(-10px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14), 0 0 0 2px var(--blue), 0 0 28px rgba(26, 58, 143, 0.2);
+}
 .card:nth-child(2):hover { transform: translateY(-10px); }
 
 /* Hover spécial pour le fondateur */
@@ -91,8 +106,20 @@
   border-radius: 50%;
   margin-bottom: 14px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.avatar span {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  line-height: 1;
 }
 
 .card:hover .avatar {
@@ -116,10 +143,25 @@
   color: var(--blue);
 }
 
-.card span {
+.role {
   font-size: 11px;
   color: var(--text-muted);
   line-height: 1.4;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.email {
+  font-size: 10px;
+  color: var(--gold);
+  display: block;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  word-break: break-all;
+}
+
+.email:hover {
+  opacity: 0.75;
 }
 
 /* Mobile : texte en haut, cards en dessous */
@@ -135,7 +177,8 @@
 
 @media (max-width: 500px) {
   .tiltLeft, .tiltRight { transform: none; }
-  .tiltLeft:hover, .tiltRight:hover { transform: translateY(-6px); }
+  .tiltLeft:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.14), 0 0 0 2px var(--blue); }
+  .tiltRight:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.14), 0 0 0 2px var(--blue); }
   .card { width: 130px; padding: 24px 12px 18px; margin-left: -8px; }
   .cards { margin-left: -8px; }
   .founder:hover { transform: translateY(-6px) scale(1.03); }
