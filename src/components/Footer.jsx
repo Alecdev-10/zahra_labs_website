@@ -19,7 +19,7 @@ const cols = [
     ],
   },
   {
-    heading: 'Maison',
+    heading: 'Nous',
     links: [
       { href: '#equipe',  label: 'À propos' },
       { href: '#impact',  label: 'Impact' },
@@ -30,7 +30,7 @@ const cols = [
 ]
 
 const socials = [
-  { href: '#', label: 'LinkedIn' },
+  { href: 'https://www.linkedin.com/company/zahra-labs/', label: 'LinkedIn' },
   { href: '#', label: 'X' },
   { href: '#', label: 'Instagram' },
   { href: '#', label: 'YouTube' },

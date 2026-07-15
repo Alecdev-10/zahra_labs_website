@@ -4,13 +4,14 @@ import Reveal from './Reveal'
 import ToggleBtn from './ToggleBtn'
 import styles from './Contact.module.css'
 
-// Configure these 3 values from your EmailJS dashboard (emailjs.com)
-// 1. Create a free account and add your Gmail/email service
-// 2. Create an email template with variables: {{from_name}}, {{from_email}}, {{company}}, {{message}}
-// 3. Copy the Service ID, Template ID, and Public Key below
-const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID'
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'
-const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY'
+// Configurez ces 3 valeurs depuis votre tableau de bord EmailJS (emailjs.com)
+// 1. Créez un compte gratuit et ajoutez votre service Gmail / email
+// 2. Créez un modèle d'email avec les variables : {{from_name}}, {{from_email}}, {{company}}, {{message}}
+// 3. Copiez dans le fichier .env l'ID du service, l'ID du modèle et la clé publique dans les vvariables adéquates.
+
+const EMAILJS_SERVICE_ID  = 'Votre_serviceID'
+const EMAILJS_TEMPLATE_ID = 'Votre_template_ID'
+const EMAILJS_PUBLIC_KEY  = 'Votre_cle_publique'
 
 export default function Contact() {
   const formRef = useRef(null)
@@ -56,7 +57,7 @@ export default function Contact() {
             <div className={styles.info}>
               <div>
                 <span className={styles.infoLabel}>Email</span>
-                <a href="mailto:rachidiabdullahi19950@gmail.com" className={styles.infoValue}>rachidiabdullahi19950@gmail.com</a>
+                <a href="mailto:zahralabs@gmail.com" className={styles.infoValue}>zahralabs@gmail.com</a>
               </div>
               <div>
                 <span className={styles.infoLabel}>Téléphone</span>
@@ -89,7 +90,7 @@ export default function Contact() {
             <input className={styles.input} type="text"  name="company"      placeholder="Votre entreprise (optionnel)"          autoComplete="organization" />
             <textarea className={`${styles.input} ${styles.textarea}`} name="message" placeholder="Décrivez votre projet…" required />
             <div>
-              <ToggleBtn variant="light">
+              <ToggleBtn variant="light" type = "submit" href=''>
                 {btnLabel}
               </ToggleBtn>
             </div>
